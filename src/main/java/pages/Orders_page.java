@@ -1,6 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -87,14 +89,40 @@ public class Orders_page {
 	
 	@FindBy(xpath="(//div[@class='item-content'])[7]")
 	public WebElement shai_paneer;
-
+	
+	@FindBy(xpath="//button[text()='PIZZA SHOP ']")
+	public WebElement pizzashop_button;
+	
+	@FindBy(xpath="//a[contains(text(),'TEASHOP')]")
+	public WebElement teashop_button;
+	
+	@FindBy(xpath="//div[@class='quickactions c4']")
+	public WebElement dashboard_button;
+	
+	@FindBy(xpath="//a[contains(@class,'open-close hidden-xs')]")
+	public WebElement threelines_link;
+	
+	@FindBy(xpath="//span[text()=' Inventory ']")
+	public WebElement inventory_link;
+	
+	@FindBy(xpath="//a[contains(text(),'Manage Inventory')]")
+	public WebElement manage_inventory_link;
+	
+	@FindBy(xpath="//tr[2]/td[2]")
+	public WebElement table_content;
+	
+	@FindBy(tagName="body")
+	public WebElement body_1;
+	
 	WebDriver driver;
 
 	
 	public Orders_page(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver,this);
+	    this.driver = driver;
+	    PageFactory.initElements(driver, this);
 	}
+
+
 	public void clickonliveorders() {
 //		WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(60));
 //		wait.until(ExpectedConditions.elementToBeClickable(liveorders));
@@ -178,12 +206,101 @@ public class Orders_page {
 		System.out.println("Discount amount applied"+discount_amount);
 	}
 	public void item_teashop() throws InterruptedException {
-		Thread.sleep(5000);
 		for(int i=0;i<5;i++) {
+			Thread.sleep(2000);
 			coco_item.click();
+			Thread.sleep(2000);
+			Actions act = new Actions(driver);
+		    act.sendKeys(Keys.ESCAPE).perform();
+			
+//			WebElement dialogBoxLocator = driver.findElement(By.xpath("//button[text()='Create Order']/following-sibling::button"));
+//			if(isElementPresent(driver,dialogBoxLocator))
+//			{
+//			//Thread.sleep(2000);
+//				dialogBoxLocator.click();
+//			}
+			
 		}
-	shai_paneer.click();
-		}
+	
+	}
+	
+
+
+
+	public void threelines() {
+		threelines_link.click();
+	}
+	public void dashboard() {
+		dashboard_button.click();
+	}
+	public void inventory() {
+		inventory_link.click();
+	}
+	
+	public void manageinventroy() {
+		manage_inventory_link.click();
+	}
+	public void tablecontent() throws InterruptedException {
+		
+		String val= table_content.getText();
+        String result = val.replaceAll("\\s*bottle\\s*", "");
+        int units_updated = Integer.parseInt(result);
+        int units_initial = tablecontent1();
+        int initialInventory = units_initial; 
+        int updatedInventory = units_updated;
+        
+        
+
+        // Display the results
+        System.out.println("Initial Inventory: " + initialInventory);
+        
+        System.out.println("Updated Inventory: " + updatedInventory);
+        
+        System.out.println(initialInventory-updatedInventory);
+        
+	}
+	
+	public int tablecontent1() throws InterruptedException {
+		
+		
+		
+		String val= table_content.getText();
+        String result = val.replaceAll("\\s*bottle\\s*", "");
+		int unitsi = Integer.parseInt(result);
+		return unitsi;
+	}
+	
+	public void scrollDown(WebDriver driver) throws InterruptedException {
+		//driver.findElement(By.xpath("//a[contains(.,'Inbox')]")).click();
+		
+		//Thread.sleep(3000);
+
+//		 JavascriptExecutor js = (JavascriptExecutor) driver;
+//		 
+//		 js.executeScript("window.scrollBy(0,750)");
+		Actions actions = new Actions(driver);
+
+        // Locate an element on the page (you can choose any element)
+        WebElement element = manage_inventory_link;
+
+        // Perform a downward scroll using the Actions class
+        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+//        Thread.sleep(1000);
+//        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+//        Thread.sleep(1000);
+//        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+//        Thread.sleep(1000);
+//        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+//        Thread.sleep(1000);
+//        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+//        Thread.sleep(1000);
+//        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+//        Thread.sleep(1000);
+//        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+//        Thread.sleep(1000);
+//        actions.moveToElement(element).sendKeys("\ue035").build().perform();
+        
+	}
 	public void mouse_hover() {
 		WebElement mainMenu = driver.findElement(By.xpath("//button[text()='PIZZA SHOP ']"));
 		Actions actions = new Actions(driver);
@@ -192,8 +309,6 @@ public class Orders_page {
 		actions.moveToElement(subMenu).click().build().perform();
 		WebElement body = driver.findElement(By.tagName("body"));
 		actions.moveToElement(body).build().perform();
-
-	
 	}
 
 }

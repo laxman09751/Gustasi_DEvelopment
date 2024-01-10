@@ -6,7 +6,7 @@ Feature: Gustasi Registration Application
     When User enter the details into the below fields
       | First name   | Lucky         |
       | Last name    | k             |
-      | Phone Number |   9200000007	 |
+      | Phone Number |    9200000007 |
       | Email        | bah@gmail.com |
       | password     |      12345678 |
       | City         | Vijaywada     |

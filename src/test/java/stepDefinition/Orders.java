@@ -1,8 +1,11 @@
 package stepDefinition;
 
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import Factory.DriverFactory;
 import io.cucumber.java.en.And;
@@ -60,6 +63,8 @@ public class Orders {
 		Thread.sleep(2000);
 	    Actions act = new Actions(driver);
 	    act.sendKeys(Keys.ESCAPE).perform();
+	    Thread.sleep(3000);
+	  
 	}
 
 	@When("user selects the pizza items")
@@ -123,6 +128,7 @@ public class Orders {
 		    	Orders_page op = new Orders_page(driver);
 		        Thread.sleep(2000);
 		        op.margettia();
+		        
 		    }
 
 		    @And("user clicks on settlenow button")
@@ -175,7 +181,48 @@ public class Orders {
 			@When("user selects the items from Teashop")
 			public void user_selects_the_items_from_teashop() throws InterruptedException {
 			    Orders_page op = new Orders_page(driver);
+			   
 			    op.item_teashop();
+			    
+			}
+			@When("user navigate to the Dashboard")
+			public void user_navigate_to_the_dashboard() {
+				
+				Orders_page op= new Orders_page(driver);
+				
+				op.dashboard();
+
+			   
+			}
+
+			@When("user checks for the inventory units how many in the inventory")
+			public void user_checks_for_the_inventory_units_how_many_in_the_inventory() throws InterruptedException {
+				Orders_page op= new Orders_page(driver);
+				//Thread.sleep(3000);
+				//op.threelines();
+				Thread.sleep(3000);
+				op.inventory();
+				Thread.sleep(3000);
+				op.manageinventroy();
+				Thread.sleep(3000);
+				op.tablecontent();
+			}
+			@When("user checks for the inventory units how many in the inventory0")
+			public void user_checks_for_the_inventory_units_how_many_in_the_inventory0() throws InterruptedException {
+				Orders_page op= new Orders_page(driver);
+				Thread.sleep(3000);
+				op.threelines();
+				Thread.sleep(3000);
+				//op.inventory();
+				//Thread.sleep(3000);
+				WebElement avail = driver.findElement(By.xpath("//div[text()='Available']"));
+				Actions action = new Actions(driver);
+				action.moveToElement(avail).build().perform();
+				Thread.sleep(4000);
+				op.scrollDown(driver);
+				op.manageinventroy();
+				Thread.sleep(3000);
+				op.tablecontent1();
 			}
 		}
 

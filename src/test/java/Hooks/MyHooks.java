@@ -15,14 +15,25 @@ import utils.configreader;
 public class MyHooks {
 	 WebDriver driver;
 	@Before
+//	public void setup() {
+//		Properties prop = configreader.intiliazeProperties();
+//		DriverFactory.intializeBrowser(prop.getProperty("browser"));
+//		driver=DriverFactory.getDriver();
+//		 driver.manage().window().maximize();
+//		driver.manage().deleteAllCookies();
+//			driver.get(prop.getProperty("url"));
+//	}
 	public void setup() {
-		Properties prop = configreader.intiliazeProperties();
-		DriverFactory.intializeBrowser(prop.getProperty("browser"));
-		driver=DriverFactory.getDriver();
-		 driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-			driver.get(prop.getProperty("url"));
+	    Properties prop = configreader.intiliazeProperties();
+	    String browser = System.getProperty("browser") != null ? System.getProperty("browser") : prop.getProperty("browser");
+	    
+	    DriverFactory.intializeBrowser(browser);
+	    driver = DriverFactory.getDriver();
+	    driver.manage().window().maximize();
+	    driver.manage().deleteAllCookies();
+	    driver.get(prop.getProperty("url"));
 	}
+
 	@After
 	public void teardown(Scenario scenario) {
 		String scenarioname= scenario.getName().replaceAll(" ","_");
