@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -267,6 +266,7 @@ public class Orders_page {
 		String val= table_content.getText();
         String result = val.replaceAll("\\s*bottle\\s*", "");
 		int unitsi = Integer.parseInt(result);
+		System.out.print(unitsi);
 		return unitsi;
 	}
 	

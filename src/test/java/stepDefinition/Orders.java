@@ -2,7 +2,6 @@ package stepDefinition;
 
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -215,11 +214,12 @@ public class Orders {
 				Thread.sleep(3000);
 				//op.inventory();
 				//Thread.sleep(3000);
-				WebElement avail = driver.findElement(By.xpath("//div[text()='Available']"));
-				Actions action = new Actions(driver);
-				action.moveToElement(avail).build().perform();
+				WebElement iframe = driver.findElement(By.xpath("//a[contains(text(),'Manage Inventory')]"));
+		        new Actions(driver)
+		                .scrollToElement(iframe)
+		                .perform();
 				Thread.sleep(4000);
-				op.scrollDown(driver);
+				
 				op.manageinventroy();
 				Thread.sleep(3000);
 				op.tablecontent1();
