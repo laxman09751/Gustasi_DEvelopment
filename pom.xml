@@ -8,13 +8,13 @@
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-java</artifactId>
-    <version>7.14.0</version>
+    <version>7.15.0</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-junit</artifactId>
-    <version>7.14.0</version>
+    <version>7.15.0</version>
     <scope>test</scope>
 </dependency>
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
@@ -46,7 +46,7 @@
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.8.0</version>
         </plugin>
       
 		      <plugin>

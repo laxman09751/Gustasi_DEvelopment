@@ -74,6 +74,7 @@ public class Orders {
 //		act.sendKeys(Keys.ESCAPE).perform();
 		op.margettia();
 		Thread.sleep(3000);
+		//op.room_101_createorder();
 		 op.dine();
 		 Thread.sleep(3000);
 		op.cheese();
@@ -222,7 +223,52 @@ public class Orders {
 				
 				op.manageinventroy();
 				Thread.sleep(3000);
-				op.tablecontent1();
+				int receivedvalue =op.tablecontent1();
+				System.out.println("The received value is"+receivedvalue);
 			}
-		}
+		
 
+@When("user pays with cash")
+public void user_pays_with_cash() throws InterruptedException {
+	Orders_page op= new Orders_page(driver);
+	Thread.sleep(2000);
+	op.cash();
+	
+}
+@When("user clicks on the room and select room no101 and click on create order")
+public void user_clicks_on_the_room_and_select_room_no101_and_click_on_create_order() throws InterruptedException {
+	Orders_page op= new Orders_page(driver);
+	Thread.sleep(2000);
+	op.room_101_createorder();
+}
+@When("user selects the pizza items clicks on the room and select room no101 and click on create order")
+public void user_selects_the_pizza_items_clicks_on_the_room_and_select_room_no101_and_click_on_create_order() throws InterruptedException {
+	Orders_page op= new Orders_page(driver);
+	Thread.sleep(3000);
+
+	op.margettia();
+	Thread.sleep(3000);
+op.room_101_createorder();
+	
+	 Thread.sleep(3000);
+	op.cheese();
+	Thread.sleep(2000);
+	op.corn();
+	Thread.sleep(5000);
+}
+@When("user pays with Airtel Money")
+public void user_pays_with_Airtel_Money() throws InterruptedException{
+	Orders_page op= new Orders_page(driver);
+	Thread.sleep(2000);
+	op.airtelcash();
+	
+}
+@When("user pays with paylater")
+public void user_pays_with_paylater()throws InterruptedException{
+	Orders_page op= new Orders_page(driver);
+	Thread.sleep(2000);
+	op.paylater();
+	
+}
+    
+}

@@ -113,6 +113,15 @@ public class Orders_page {
 	@FindBy(tagName="body")
 	public WebElement body_1;
 	
+	@FindBy(xpath="(//button[contains(@class,'btn dine-type')])[1]")
+	public WebElement room;
+	@FindBy(xpath="(//button[contains(@class,'btn dine-btn')])[1]")
+	public WebElement _101;
+	@FindBy(xpath="//button[text()='Create Order']")
+	public WebElement Create_Order;
+	@FindBy(xpath="//button[contains(@class,'btn btn-danger')]")
+	public WebElement Bill_Paylater;
+	
 	WebDriver driver;
 
 	
@@ -171,6 +180,14 @@ public class Orders_page {
 	public void live_orders() {
 		liveordersbutton.click();
 	}
+	public void airtelcash() {
+		BillAirtel.click();
+		
+	}
+	public void paylater() {
+		Bill_Paylater.click();
+		
+	}
 	public void enter_discount() throws InterruptedException {
 		discount.clear();
 		Thread.sleep(2000);
@@ -212,12 +229,6 @@ public class Orders_page {
 			Actions act = new Actions(driver);
 		    act.sendKeys(Keys.ESCAPE).perform();
 			
-//			WebElement dialogBoxLocator = driver.findElement(By.xpath("//button[text()='Create Order']/following-sibling::button"));
-//			if(isElementPresent(driver,dialogBoxLocator))
-//			{
-//			//Thread.sleep(2000);
-//				dialogBoxLocator.click();
-//			}
 			
 		}
 	
@@ -271,13 +282,7 @@ public class Orders_page {
 	}
 	
 	public void scrollDown(WebDriver driver) throws InterruptedException {
-		//driver.findElement(By.xpath("//a[contains(.,'Inbox')]")).click();
-		
-		//Thread.sleep(3000);
 
-//		 JavascriptExecutor js = (JavascriptExecutor) driver;
-//		 
-//		 js.executeScript("window.scrollBy(0,750)");
 		Actions actions = new Actions(driver);
 
         // Locate an element on the page (you can choose any element)
@@ -309,6 +314,12 @@ public class Orders_page {
 		actions.moveToElement(subMenu).click().build().perform();
 		WebElement body = driver.findElement(By.tagName("body"));
 		actions.moveToElement(body).build().perform();
+	}
+	public void room_101_createorder() {
+		room.click();
+		_101.click();
+		Create_Order.click();
+		
 	}
 
 }

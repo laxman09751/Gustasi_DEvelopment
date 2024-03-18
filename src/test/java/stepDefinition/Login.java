@@ -40,6 +40,7 @@ public class Login {
 	public void user_clicks_on_the_login_button() throws InterruptedException {
 		Login_page lp = new Login_page(driver);
 	    lp.loginbutton();
+	    Thread.sleep(2000);
 	}
 
 	@Then("User logged into the gustasi webpage")
