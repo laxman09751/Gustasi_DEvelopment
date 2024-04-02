@@ -1,11 +1,7 @@
 package pages;
 
-<<<<<<< HEAD
-
-=======
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
->>>>>>> cb2b35412ed05cba1ef098e21abdc50642a1f22a
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -86,11 +82,11 @@ public int table_content1() {
 	String val= table_content.getText();
     String result = val.replaceAll("\\s*bottle\\s*", "");
 	int unitsi = Integer.parseInt(result);
-<<<<<<< HEAD
+
 	System.out.print("After adding 200 units total is "+unitsi);
-=======
+
 	System.out.print(unitsi);
->>>>>>> cb2b35412ed05cba1ef098e21abdc50642a1f22a
+
 	return unitsi;
 }
 

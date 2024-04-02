@@ -215,11 +215,9 @@ public class Registration {
 		
 		String imagePath = "/Users/konalakshmanarao/Desktop/tt.png";
 
-		// Method to upload file using native file upload dialog
-	
+			
 		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
     
-		// Set the file path to the file input element using JavaScript
 		
 		((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'block';", fileInput);
     
