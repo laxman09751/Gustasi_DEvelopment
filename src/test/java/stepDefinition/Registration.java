@@ -205,35 +205,18 @@ public class Registration {
 	
 		Thread.sleep(3000);
 		
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		
-		js.executeScript("window.scrollBy(0,350)");
-		
-		WebElement uploadButton = driver.findElement(By.xpath("//span[contains(@class,'title btn')]"));
-	              
-		uploadButton.click();
-		
-		String imagePath = "/Users/konalakshmanarao/Desktop/tt.png";
+		 String currentDirectory = System.getProperty("user.dir");
+	     
+		 String imagepath = currentDirectory + "/src/main/resources/Images_items/pine.jpeg";
+	    	
 
 			
 		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
     
 		
-		((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'block';", fileInput);
+		fileInput.sendKeys(imagepath);
     
-		fileInput.sendKeys(new File(imagePath).getAbsolutePath());
-    
-		Robot robot = new Robot();
-    
-		robot.keyPress(KeyEvent.VK_META); // Press the Command key (Mac's Command key)
-   
-		robot.keyPress(KeyEvent.VK_W); // Press the 'W' key
-    
-		robot.keyRelease(KeyEvent.VK_W); // Release the 'W' key
-    
-		robot.keyRelease(KeyEvent.VK_META); // Release the Command key
-   
-		js.executeScript("window.scrollBy(0,350)");
+		
     
 		Thread.sleep(2000);
 
@@ -428,20 +411,31 @@ public class Registration {
 		
 		driver = DriverFactory.getDriver();
 		
-		WebElement uploadButton = driver.findElement(By.xpath("//img[@class='thumb-xl img-circle']"));
-	    
-	    uploadButton.click();
-	
-	    String imagePath = "/Users/konalakshmanarao/Desktop/tt.png";
-	    
-	    WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-	
-	    // Set the file path to the file input element using JavaScript
-	    
-	    ((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'block';", fileInput);
-	    
-	    fileInput.sendKeys(new File(imagePath).getAbsolutePath());
-	    
+ String currentDirectory = System.getProperty("user.dir");
+	     
+		 String imagepath = currentDirectory + "/src/main/resources/Images_items/pine.jpeg";
+	    	
+
+			
+		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+    
+		
+		fileInput.sendKeys(imagepath);
+//		
+//		WebElement uploadButton = driver.findElement(By.xpath("//img[@class='thumb-xl img-circle']"));
+//	    
+//	    uploadButton.click();
+//	
+//	    String imagePath = "/Users/konalakshmanarao/Desktop/tt.png";
+//	    
+//	    WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+//	
+//	    // Set the file path to the file input element using JavaScript
+//	    
+//	    ((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'block';", fileInput);
+//	    
+//	    fileInput.sendKeys(new File(imagePath).getAbsolutePath());
+//	    
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 	    
 	    js.executeScript("window.scrollBy(0,350)");
@@ -503,7 +497,7 @@ public class Registration {
 	   
 	     ((JavascriptExecutor) driver).executeScript("arguments[0].style.display = 'block';", fileInput2);
 	    
-	     fileInput2.sendKeys(new File(imagePath).getAbsolutePath());
+	     fileInput2.sendKeys(new File(imagepath).getAbsolutePath());
 	    
 	     WebElement dropdown = driver.findElement(By.name("side"));
 	

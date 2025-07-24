@@ -1,9 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -36,6 +36,17 @@ public class Inventory_page {
 	
 	@FindBy(xpath="//tr[2]/td[2]")
 	public WebElement table_content;
+	
+	@FindBy(xpath="//a[contains(text(),'Suppliers')]")
+	public WebElement suppliers_button;
+	
+	@FindBy(xpath="//button[text()='+ Create']")
+	public WebElement suppliers_create_button;
+	
+	@FindBy(xpath="(//input[contains(@class,'form-control ng-untouched')])[1]")
+	public WebElement supplier_name_text;
+	
+	
 	
 	WebDriver driver;
 
@@ -89,7 +100,18 @@ public int table_content1() {
 
 	return unitsi;
 }
+public void supplier() throws InterruptedException {
+	WebElement iframe = suppliers_button;
+    new Actions(driver)
+            .scrollToElement(iframe)
+            .perform();
+	Thread.sleep(2000);
+	suppliers_button.click();
+	suppliers_create_button.click();
+}
 
-
+public void supplier_name(String arg) {
+	supplier_name_text.sendKeys(arg);
+}
 	
 }

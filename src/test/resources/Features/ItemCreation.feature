@@ -1,31 +1,27 @@
-Feature: Gustasi Application
+Feature: Gustasi Web Application
 
-  Scenario: Gustasi Login with valid username and passwordGiven user enter the gustasi URL
-    Given user enter the gustasi URL
-    When user click on login
-    And user enter the login id
-    And user enter the password
-    And user click on login
-    And user click on my account select profile
-    And user click multiple menu
-    And user add the hotel,bar,restaurant
-    And user click on menu categories
-    And user add biryani,non veg,veg,starters
-    And user click on my store
-    And user select manage menu
-    And user click on create item
-    And user click on title
-    And user writes the title name
-    And user click on item menu type
-    And user select hotel
-    And user click on category
-    And user select biryani
-    And user click on organic,lunch,dinner
-    And user click on meat
-    And user click on price
-    And user writes the price
-    And user click on save
-    And item status has been saveed successfully
-    And user click on publish too see the item in hotel menu
-    Then item status has been updated successfully
+  Scenario Outline: Gustasi Web Item creation
+    Given Users enter the login to the application using URL
+    When User enter the mobile number with "1231233211"
+    And User enter the password with "Gustasi@1"
+    And User clicks on the login button
+    And user click on Mystore
+    And user click on managemenu
+    Then user click on create item
+  	And user uploads the image
+    And user Enters the Title of the item "<itemname>"
+    And user gives description of the item "<itemdescription>"
+    And user selects item menu type
+    And user selects category of the item
+    And user selects the organic or Glutenfree
+    And user selects food avail
+    And user selects foodtype
+    And user enter the price of the item "<price>"
+    And saves the item
+    And item saves succesfully
+    And make the item publish
+
     
+    Examples: 
+    |itemname	|itemdescription|price|
+    |pineapple pizza|pineapple|199|

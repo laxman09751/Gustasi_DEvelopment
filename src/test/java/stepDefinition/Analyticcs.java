@@ -1,0 +1,77 @@
+package stepDefinition;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import Factory.DriverFactory;
+import io.cucumber.java.en.When;
+import pages.reservation_page;
+
+public class Analyticcs {
+	private WebDriver driver;
+	
+	@When("User click on the three menu lines")
+	public void user_click_on_the_three_menu_lines() throws InterruptedException {
+		driver= DriverFactory.getDriver();
+    	reservation_page rp = new reservation_page(driver);
+    	Thread.sleep(2000);
+    	rp.threeline();
+    	Thread.sleep(2000);
+    	WebElement iframe = rp.reservations_button;
+        new Actions(driver)
+                .scrollToElement(iframe)
+                .perform();
+        Thread.sleep(2000);
+       
+	}
+
+	@When("user clicks on the Analytics button")
+	public void user_clicks_on_the_analytics_button() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("User clicks on the Today")
+	public void user_clicks_on_the_today() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user clicks on menu and select the Restaurant")
+	public void user_clicks_on_menu_and_select_the_restaurant() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user clicks on show button")
+	public void user_clicks_on_show_button() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user gets the Total sales data")
+	public void user_gets_the_total_sales_data() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user gets Orders data")
+	public void user_gets_orders_data() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user gets Quantity sold data")
+	public void user_gets_quantity_sold_data() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@When("user gets Tempered sales data")
+	public void user_gets_tempered_sales_data() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+}

@@ -3,6 +3,7 @@ package utils;
 import java.time.Duration;
 
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,13 +36,13 @@ public class ElementUtils {
 		
 	}
 	
-	public WebElement waitForElement(WebElement element,long durationInseconds) {
+	public WebElement waitForElement(Object object,long durationInseconds) {
 		WebElement webElement= null;
 		try {
 			
 		
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(durationInseconds));
-		webElement= wait.until(ExpectedConditions.elementToBeClickable(element));
+		webElement= wait.until(ExpectedConditions.elementToBeClickable((By) object));
 		
 		}
 		catch(Throwable e) {
