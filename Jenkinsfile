@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK 11'               // Make sure this matches Jenkins JDK installation name
-        maven 'Maven 3.8.1'        // Replace with your Maven version name in Jenkins
+        jdk 'JDK 11'               // Use the correct names configured in Jenkins
+        maven 'Maven 3.8.1'
     }
 
     environment {
@@ -31,14 +31,20 @@ pipeline {
 
         stage('Generate Report') {
             steps {
-                // If you are using Cucumber or Surefire plugin
-                junit '**/target/surefire-reports/*.xml'  // For JUnit/TestNG
-                cucumber 'target/CucumberReports/CucumberReport.json'  // If Cucumber plugin is installed
+                junit '**/target/surefire-reports/*.xml'
+                cucumber 'target/CucumberReports/CucumberReport.json'
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: '**/target/*.ja***
-
+            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+        }
+        failure {
+            mail to: 'your-email@example.com',
+                 subject: "Build Failed in Jenkins: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Check Jenkins for details: ${env.BUILD_URL}"
+        }
+    }
+}
