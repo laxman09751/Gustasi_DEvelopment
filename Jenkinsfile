@@ -1,8 +1,12 @@
 pipeline {
     agent any
 
+    triggers {
+        cron('0 1 * * *')  // Every day at 1 AM
+    }
+
     tools {
-        jdk 'JDK 11'               // Use the correct names configured in Jenkins
+        jdk 'JDK 11'
         maven 'Maven 3.8.1'
     }
 
@@ -16,7 +20,6 @@ pipeline {
                 checkout scm
             }
         }
-
 
         stage('Run Tests') {
             steps {
