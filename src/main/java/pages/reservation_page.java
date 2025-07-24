@@ -99,6 +99,19 @@ public class reservation_page {
 	 @FindBy(xpath="(//a[@class='nav-link'])[3]")
 	 public WebElement logout_link; 
 	 
+	 @FindBy(xpath="//div[@class='time-tab active']")
+	 public WebElement past_bookings_button;
+	 
+	 @FindBy(xpath="(//button[contains(@class,'btn btn-danger')])[2]")
+	 public WebElement cancel_button2;
+	 
+	 @FindBy(xpath="//div[text()=' View Menu']")
+	 public WebElement viewmenu_button;
+	 
+	 @FindBy(xpath="//div[@class='subt']/following-sibling::div[1]")
+	 public WebElement restuarant_name;
+
+	 
 	 WebDriver driver;
 	 
 	public reservation_page(WebDriver driver) {
@@ -185,5 +198,21 @@ public class reservation_page {
 	}
 	public void logout() {
 		logout_link.click();
+	}
+	public void pastbooking() {
+		past_bookings_button.click();
+	}
+	public void cancel2() {
+		cancel_button2.click();
+	}
+	public void viewmenu() {
+		viewmenu_button.click();
+	}
+	public void getrestuarantname() {
+		String str=restuarant_name.getText();
+		System.out.println("Restuarant name"+str);
+		if(str.equals("LAKSHMAN")) {
+			System.out.println("Restuarant reservation succesfully opened");
+		}
 	}
 }

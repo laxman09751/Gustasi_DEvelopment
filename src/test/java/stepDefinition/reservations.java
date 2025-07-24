@@ -1,6 +1,5 @@
 package stepDefinition;
 
-import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -10,8 +9,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Factory.DriverFactory;
 import io.cucumber.java.en.And;
@@ -66,14 +63,11 @@ public class reservations {
 	    	 js.executeScript("window.scrollBy(0,350)");
 	    	 Thread.sleep(2000);
 	    }
-	   
-
-	    @And("user select the required date")
+	   	    @And("user select the required date")
 	    public void userSelectTheRequiredDate() {
 	    	driver= DriverFactory.getDriver();
 	    	reservation_page rp = new reservation_page(driver);
 	    	rp.select_date();
-	    	
 	    	 
 	    }
 
@@ -116,12 +110,7 @@ public class reservations {
 	    	driver= DriverFactory.getDriver();
 	    	reservation_page rp = new reservation_page(driver);
 	    	rp.special_notes_area();
-	    	//JavascriptExecutor js = (JavascriptExecutor) driver;
-	    	 //js.executeScript("window.scrollBy(0,350)");
 	    }
-
-
-
 		@And("Click on the reserve table")
 	    public void clickOnTheReserveTable() throws InterruptedException {
 	    	driver= DriverFactory.getDriver();
@@ -230,12 +219,14 @@ public class reservations {
 	    }
 
 	    @And("click on the confirm button")
-	    public void clickOnTheConfirmButton() {
+	    public void clickOnTheConfirmButton() throws InterruptedException {
 	    	driver= DriverFactory.getDriver();
+	    	Thread.sleep(2000);
 	    	reservation_page rp = new reservation_page(driver);
 	    		if(id.equals(reservationID)) {
 	    		rp.confirm();
 	    	}
+	    		
 	    }
 	    @And("click on the cancel button")
 	    public void clickOnThecancelButton() {
@@ -246,15 +237,15 @@ public class reservations {
 	    }
 
 	    @Then("check for the toast confirmed message")
-	    public void checkForTheToastConfirmedMessage() {
+	    public void checkForTheToastConfirmedMessage() throws InterruptedException {
 	    	driver= DriverFactory.getDriver();
 	    	reservation_page rp = new reservation_page(driver);
-	    	WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
-	    	wait.until(ExpectedConditions.visibilityOf(rp.success_toast_message));
+//	    	WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
+//	    	wait.until(ExpectedConditions.visibilityOf(rp.success_toast_message));
+	    	Thread.sleep(2000);
 	    	success_toast=rp.success_toast_message.getText();
 	    	System.out.println(success_toast);
-	    	
-	    }
+	    	}
 	    @And("user clicks on dashboard")
 	    public void userclicksondashboard() throws InterruptedException {
 	    	driver= DriverFactory.getDriver();
@@ -303,7 +294,25 @@ public class reservations {
 	        Thread.sleep(2000);
 	        rp.reservations();
 		}
-	}
+	    @And("customer want to cancel the reservation")
+	    public void customer_want_to_cancel_the_reservation() throws InterruptedException {
+	    	driver= DriverFactory.getDriver();
+	    	Thread.sleep(7000);
+	    	reservation_page rp = new reservation_page(driver);
+	    	rp.pastbooking();
+	    	Thread.sleep(2000);
+	    	rp.cancel2();
+	    	//rp.search();
+	    }
+	    @And("Get the restuarant name")
+	    public void gettherestuarantname() throws InterruptedException {
+	    	driver=DriverFactory.getDriver();
+	    	Thread.sleep(2000);
+	    	reservation_page rp= new reservation_page(driver);
+	    	rp.getrestuarantname();
+	    	
+	    }
+}
 
 
 

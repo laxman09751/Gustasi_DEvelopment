@@ -153,6 +153,7 @@ public class Registration {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("foodloader")));
 
 		WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='OK']")));
+		
 		button.click();
 
 		driver.findElement(By.xpath("//input[contains(@class,'form-control otp-input')]")).sendKeys("1001");
@@ -196,8 +197,8 @@ public class Registration {
 	
 	@And("user enter the Display name {string}")
 	public void user_enter_the_Display_name(String string) {
-		driver.findElement(By.xpath("/html/body/app-root/div[2]/div[2]/app-step1-profile-basic/div/div[1]/form/div[2]/input")).sendKeys(string);
 		
+		driver.findElement(By.xpath("/html/body/app-root/div[2]/div[2]/app-step1-profile-basic/div/div[1]/form/div[2]/input")).sendKeys(string);
 	}
 
 	@And("user upload the Display image")
@@ -209,22 +210,15 @@ public class Registration {
 	     
 		 String imagepath = currentDirectory + "/src/main/resources/Images_items/pine.jpeg";
 	    	
-
-			
 		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-    
-		
+    	
 		fileInput.sendKeys(imagepath);
     
-		
-    
 		Thread.sleep(2000);
-
     
 		driver.findElement(By.xpath("//span[contains(@class,'btn btn-success')]")).click();
     
 		Thread.sleep(2000);
-    
     
 		driver.findElement(By.xpath("//*[@id=\"profile-image-crop-div\"]/div/div/div[3]/span")).click();
     
